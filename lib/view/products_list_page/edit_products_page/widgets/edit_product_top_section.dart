@@ -39,7 +39,90 @@ class EditProductTopSection extends StatelessWidget {
             ),
           ),
         ),
+        kHeight20,
+        SizedBox(
+          // color: kBlack,
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  // controller.selectImage2();
+                },
+                child: Container(
+                    height: 40,
+                    width: 110,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: kBlack, width: 1),
+                        borderRadius: kBRadius10,
+                        color: kWhite),
+                    child: const Center(
+                      child: Text(
+                        'Select Image',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    )),
+              ),
+              Container(
+                  color: kGreen,
+                  height: 40,
+                  width: 250,
+                  child: Center(
+                      child:
+                          //  controller.imagefile2 == null
+                          //     ?
+                          const Text('Select an Image',
+                              maxLines: 1, style: TextStyle(fontSize: 20))
+                      // : Text(controller.imagefile2.toString(),
+                      //     maxLines: 1,
+                      //     style: const TextStyle(fontSize: 20))
+                      )),
+            ],
+          ),
+        ),
         kHeight10,
+        SizedBox(
+          // color: kBlack,
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  // controller.selectImage3();
+                },
+                child: Container(
+                    height: 40,
+                    width: 110,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: kBlack, width: 1),
+                        borderRadius: kBRadius10,
+                        color: kWhite),
+                    child: const Center(
+                      child: Text(
+                        'Select Image',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    )),
+              ),
+              Container(
+                  color: kGreen,
+                  height: 40,
+                  width: 250,
+                  child: Center(
+                      child:
+                          // controller.imagefile3 == null
+                          // ?
+                          const Text('Select an Image',
+                              maxLines: 1, style: TextStyle(fontSize: 20))
+                      // : Text(controller.imagefile2.toString(),
+                      //     maxLines: 1,
+                      //     style: const TextStyle(fontSize: 20))
+                      )),
+            ],
+          ),
+        ),
       ],
     );
   }

@@ -11,7 +11,7 @@ class ContainerConfirmButton extends StatelessWidget {
   final String buttonText;
   final Color buttonColor;
    final BorderRadius radius ;
-   final  onpressed;
+   final VoidCallback? onpressed;
   const ContainerConfirmButton({
     Key? key,
     required this.height,
@@ -26,9 +26,7 @@ class ContainerConfirmButton extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return GestureDetector(
-      onTap: (){
-        Get.offAll( onpressed);
-      },
+      onTap: onpressed,
       child: Container(
         height: height,
         width: width,

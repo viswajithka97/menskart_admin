@@ -14,7 +14,7 @@ class EditProductPage extends StatelessWidget {
       body: SafeArea(child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
-          children: const[
+          children: [
             EditProductTopSection(),
             EditProductDetailSection(),
           ],

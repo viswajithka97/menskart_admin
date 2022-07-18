@@ -16,7 +16,7 @@ class CategoriesEditPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: const [
+            children:  [
               kHeight20,
               CategoryEditImageSelect(),
               kHeight20,

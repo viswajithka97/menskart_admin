@@ -8,8 +8,16 @@ import 'package:menskart_admin/view/products_list_page/widgets/text_and_form_fie
 import 'package:menskart_admin/view/widgets/heading_text.dart';
 
 class EditProductDetailSection extends StatelessWidget {
-  const EditProductDetailSection({Key? key}) : super(key: key);
+   EditProductDetailSection({Key? key}) : super(key: key);
 
+  final TextEditingController productNameController = TextEditingController();
+  final TextEditingController brandController = TextEditingController();
+
+  final TextEditingController productPriceController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+  final TextEditingController offerPriceController = TextEditingController();
+  final TextEditingController offerPercentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,20 +26,38 @@ class EditProductDetailSection extends StatelessWidget {
         
             const HeadingText(headingText: 'Edit Details'),
             kHeight10,
-            const TextandFormFieldWidget(
-                headingText: 'Product Name', hintText: 'Mens Regular Lace Up mens Sports ShoesShoes'),
-            const TextandFormFieldWidget(
-                headingText: 'Brand', hintText: 'Nike'),
-            const TextandFormFieldWidget(
-                headingText: 'Category', hintText: 'Shoes'),
-            const TextandFormFieldWidget(
-                headingText: 'Price', hintText: '4000'),
-            const TextandFormFieldWidget(
-                headingText: 'Offer Price', hintText: '2240'),
-            const TextandFormFieldWidget(
-                headingText: 'Offer Percentage', hintText: '49'),
+         TextandFormFieldWidget(
+          headingText: 'Product Name',
+          hintText: 'Product Name',
+          controller: productNameController,
+        ),
+        TextandFormFieldWidget(
+          headingText: 'Brand',
+          hintText: 'Enter Product Brand',
+          controller: brandController,
+        ),
+        TextandFormFieldWidget(
+          headingText: 'Category',
+          hintText: 'Product Category',
+          controller: categoryController,
+        ),
+        TextandFormFieldWidget(
+          headingText: 'Price',
+          hintText: 'Product Price',
+          controller: priceController,
+        ),
+        TextandFormFieldWidget(
+          headingText: 'Offer Price',
+          hintText: 'Offer Price',
+          controller: offerPriceController,
+        ),
+        TextandFormFieldWidget(
+          headingText: 'Offer Percentage',
+          hintText: 'Offer Percentage',
+          controller: offerPercentController,
+        ),
                 kHeight10,
-                ContainerConfirmButton(height: 50, width: double.infinity, radius: kBRadius0, buttonText: 'Save Changes',buttonColor: kYellow,onpressed: const ProductListPage(),)
+                ContainerConfirmButton(height: 50, width: double.infinity, radius: kBRadius0, buttonText: 'Save Changes',buttonColor: kYellow,onpressed: (){},)
       ],
     );
   }

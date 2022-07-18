@@ -8,14 +8,14 @@ import 'package:menskart_admin/view/products_list_page/widgets/container_confirm
 import 'package:menskart_admin/view/products_list_page/widgets/text_and_form_field_widget.dart';
 
 class CategoryEditBottomSection extends StatelessWidget {
-  const CategoryEditBottomSection({Key? key}) : super(key: key);
-
+   CategoryEditBottomSection({Key? key}) : super(key: key);
+final TextEditingController categoryNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-       const TextandFormFieldWidget(
+        TextandFormFieldWidget(
                   headingText: 'Category Name',
-                  hintText: 'Jeans'),
+                  hintText: 'Jeans',controller: categoryNameController,),
               kHeight20,
               ContainerConfirmButton(
                 height: 50,
@@ -23,7 +23,7 @@ class CategoryEditBottomSection extends StatelessWidget {
                 radius: kBRadius0,
                 buttonText: 'Apply Changes',
                 buttonColor: kYellow,
-                onpressed: const CategoriesListPage(),
+                onpressed: (){},
               )
     ],);
   }

@@ -11,16 +11,16 @@ String adminLoginModelToJson(AdminLoginModel data) => json.encode(data.toJson())
 
 class AdminLoginModel {
     AdminLoginModel({
-        required this.loggin,
+        required this.login,
     });
 
-    bool loggin;
+    bool login;
 
     factory AdminLoginModel.fromJson(Map<String, dynamic> json) => AdminLoginModel(
-        loggin: json["loggin"],
+        login: json["login"],
     );
 
     Map<String, dynamic> toJson() => {
-        "loggin": loggin,
+        "login": login,
     };
 }

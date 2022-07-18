@@ -15,8 +15,8 @@ class AddProductsPage extends StatelessWidget {
           child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
-          children:const [
-            AddProductsTopSection(),
+          children: [
+            const AddProductsTopSection(),
             AddProductsDetailsSection()
           ],
         ),

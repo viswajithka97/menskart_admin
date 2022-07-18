@@ -7,7 +7,8 @@ import 'package:menskart_admin/view/core/color_constants.dart';
 class TextandFormFieldWidget extends StatelessWidget {
   final headingText;
   final hintText;
-  const TextandFormFieldWidget({Key? key,required this.headingText,required this.hintText}) : super(key: key);
+  final TextEditingController controller;
+  const TextandFormFieldWidget({Key? key,required this.headingText,required this.hintText, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,10 @@ class TextandFormFieldWidget extends StatelessWidget {
               height: 50,
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextFormField(
+                controller: controller,
                 decoration: InputDecoration(
                   fillColor: kBackgroundGrey,
+                  
                   filled: true,
                   border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(

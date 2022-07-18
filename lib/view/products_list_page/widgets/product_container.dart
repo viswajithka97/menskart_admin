@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:menskart_admin/controller/product_controller/product_controller.dart';
@@ -9,9 +11,10 @@ import 'package:menskart_admin/view/products_list_page/edit_products_page/edit_p
 import 'package:menskart_admin/view/products_list_page/widgets/container_confirm_button.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({
+  ProductContainer({
     Key? key,
   }) : super(key: key);
+  String baseImageUrl = kProductUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class ProductContainer extends StatelessWidget {
                 itemCount: controller.products.length,
                 separatorBuilder: (context, index) => kHeight10,
                 itemBuilder: (context, index) {
-                  // print(controller.products[0].description);
+                  print(controller.statusCode);
                   return Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -39,18 +42,45 @@ class ProductContainer extends StatelessWidget {
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                  height: 140,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      borderRadius: kBRadius10,
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              '$kProductUrl/${controller.products[index].id}.jpg'),
-                                          fit: BoxFit.cover)),
-                                ),
-                              ),
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: CachedNetworkImage(
+                                    height: 140,
+                                    width: 140,
+                                    imageUrl:
+                                        '$baseImageUrl/${controller.products[index].id}.jpg',
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) {
+                                      // baseImageUrl = kProductAddedUrl;
+                                      return CachedNetworkImage(
+                                        height: 140,
+                                        width: 140,
+                                        imageUrl:
+                                            '$kProductAddedUrl/${controller.products[index].id}.jpg',
+                                        placeholder: (context, url) =>
+                                            CircularProgressIndicator(),
+                                      );
+                                    },
+                                  )
+                                  //  Container(
+                                  //   height: 140,
+                                  //   width: 140,
+                                  //   decoration: BoxDecoration(
+                                  //       borderRadius: kBRadius10,
+                                  //       image: DecorationImage(
+                                  //           image: NetworkImage(
+                                  //               '$baseImageUrl/${controller.products[index].id}.jpg'),
+                                  //           onError: (
+                                  //             context,
+                                  //             error,
+                                  //           ) {
+                                  //             print('eerrprrr');
+
+                                  //             controller.update();
+                                  //           },
+                                  //           fit: BoxFit.cover)),
+                                  // ),
+                                  ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
                                 child: SizedBox(
@@ -103,7 +133,7 @@ class ProductContainer extends StatelessWidget {
                                             containerIcon: Icons.edit,
                                             radius: kBRadius30,
                                             buttonText: 'Edit',
-                                            onpressed: const EditProductPage(),
+                                            onpressed: () {},
                                           ),
                                           const Spacer(),
                                           IconButton(
@@ -130,4 +160,10 @@ class ProductContainer extends StatelessWidget {
       },
     );
   }
+
+  // void makeImages(ProductController controller) {
+  //   for(var e in controller.products){
+
+  //   }
+  // }
 }

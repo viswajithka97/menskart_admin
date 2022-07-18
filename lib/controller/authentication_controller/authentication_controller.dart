@@ -14,10 +14,10 @@ class AuthenticationController extends GetxController {
       Map<String, dynamic> login = {"email": email, "password": password};
       try {
         final response = await AuthenticationServices().loginCheck(login);
-        log(response!.data);
-        if (response.statusCode == 200 || response.statusCode == 201) {
+      
+        if (response!.statusCode == 200 || response.statusCode == 201) {
           final data = adminLoginModelFromJson(response.data);
-          if (data.loggin) {
+          if (data.login) {
             Get.offAll(() => const DashBoardPage());
           } else {
             Get.snackbar('Login Failed', 'Invalid Email or Password',
