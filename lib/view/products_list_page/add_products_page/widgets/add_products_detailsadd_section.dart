@@ -39,7 +39,7 @@ class AddProductsDetailsSection extends StatelessWidget {
               hintText: 'Enter Product Brand',
               controller: brandController,
             ),
-            const DropdowmenuHomepage(),
+             DropdowmenuHomepage(),
             TextandFormFieldWidget(
               headingText: 'Price',
               hintText: 'Product Price',

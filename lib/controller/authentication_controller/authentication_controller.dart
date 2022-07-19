@@ -14,7 +14,7 @@ class AuthenticationController extends GetxController {
       Map<String, dynamic> login = {"email": email, "password": password};
       try {
         final response = await AuthenticationServices().loginCheck(login);
-      
+
         if (response!.statusCode == 200 || response.statusCode == 201) {
           final data = adminLoginModelFromJson(response.data);
           if (data.login) {
@@ -43,9 +43,9 @@ class AuthenticationController extends GetxController {
       final response = await AuthenticationServices().logout();
 
       if (response!.statusCode == 200) {
-        final data = adminLogoutModelFromJson(response.data);
+        final data = logoutModalFromJson(response.data);
 
-        if (data.login) {
+        if (data.admin == false) {
           Get.offAll(const LoginPage());
           Get.snackbar('Success', 'Admin has successfully logged out',
               backgroundColor: Colors.green,

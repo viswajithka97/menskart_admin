@@ -1,16 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:menskart_admin/controller/product_controller/category_lIst_controler/category_list_controller.dart';
 import 'package:menskart_admin/controller/product_controller/product_controller.dart';
 import 'package:menskart_admin/view/core/color_constants.dart';
 
-String? selectedvalue;
+String? editvalue;
 
-class DropdowmenuHomepage extends StatelessWidget {
+class DropdowmenuEditPage extends StatelessWidget {
   final int? index;
-  DropdowmenuHomepage({Key? key, this.index}) : super(key: key);
+  DropdowmenuEditPage({Key? key, this.index}) : super(key: key);
 
   final productcontroller = Get.find<ProductController>();
 
@@ -37,8 +35,9 @@ class DropdowmenuHomepage extends StatelessWidget {
                   isExpanded: true,
                   elevation: 0,
                   alignment: Alignment.centerLeft,
-                  hint: const Text('Select Category'),
-                  value: selectedvalue,
+                  hint: Text(
+                      productcontroller.products[index!].category.toString()),
+                  value: editvalue,
                   items: controller.categoryList.map((category) {
                     return DropdownMenuItem(
                       value: category.category,
@@ -46,7 +45,7 @@ class DropdowmenuHomepage extends StatelessWidget {
                     );
                   }).toList(),
                   onChanged: (value) async {
-                    selectedvalue = value.toString();
+                    editvalue = value.toString();
                     controller.update();
                   }),
             ),

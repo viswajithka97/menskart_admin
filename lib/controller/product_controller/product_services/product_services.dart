@@ -18,6 +18,17 @@ class ProductServices {
     return null;
   }
 
+  Future<Response<dynamic>?> deleteProduct(String id) async {
+    try {
+      final response = await dio.get('delete-product/$id');
+
+      return response;
+    } catch (e) {
+      DioError;
+    }
+    return null;
+  }
+
   Future<Response<dynamic>?> addProduct(
     String productName,
     String brand,
@@ -28,7 +39,6 @@ class ProductServices {
     File imagefile2,
     File imagefile3,
   ) async {
-    log("==========imagefile===========${imagefile1.toString()}");
     String fileName1 = imagefile1.path.split('/').last;
     String fileName2 = imagefile3.path.split('/').last;
     String fileName3 = imagefile3.path.split('/').last;
@@ -53,9 +63,6 @@ class ProductServices {
       "image3": image3
     });
 
-    log(formData.fields.toString());
-    log(image2.toString());
-
     Map<String, String> requestHeaders = {
       "Content-Type": "multipart/form-data",
     };
@@ -69,12 +76,51 @@ class ProductServices {
         ),
       );
 
-      print(response.data.toString());
       return response;
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
     }
-    print("jdkjadfjakljklafjafkljasdflkj");
+    return null;
+  }
+
+  Future<Response<dynamic>?> updateProduct(
+      String productName,
+      String brand,
+      String category,
+      String price,
+      String percentage,
+      String productId,
+      File image) async {
+    String fileName1 = image.path.split('/').last;
+    print(productId);
+    final image1 = await MultipartFile.fromFile(image.path,
+        filename: fileName1, contentType: MediaType('image', 'jpg'));
+
+    FormData formData = FormData.fromMap({
+      "category": category,
+      "brand": brand,
+      "description": productName,
+      "orginalPrice": int.parse(price),
+      "offerpercentage": percentage,
+      "image": image1,
+    });
+    log(formData.fields.toString());
+
+    Map<String, String> requestHeaders = {
+      "Content-Type": "multipart/form-data",
+    };
+    try {
+      final response = await dio.post(
+        'edit-product/$productId',
+        data: formData,
+        options: Options(
+          headers: requestHeaders,
+        ),
+      );
+      return response;
+    } catch (e) {
+      log("=======catch======${e.toString()}");
+    }
     return null;
   }
 
@@ -84,8 +130,7 @@ class ProductServices {
       return response;
     } catch (e) {
       if (e is DioError) {
-        print(
-            "----------------------------------------${e.response!.data.toString()}");
+        log("----------------------------------------${e.response!.data.toString()}");
       }
     }
     return null;

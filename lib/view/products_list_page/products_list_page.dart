@@ -17,8 +17,7 @@ class ProductListPage extends StatelessWidget {
       ),
       body: SafeArea(
           child: Column(
-        // shrinkWrap: true,
-        children:  [
+        children: [
           Expanded(
             child: ProductContainer(),
           ),

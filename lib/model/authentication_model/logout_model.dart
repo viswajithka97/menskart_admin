@@ -1,26 +1,26 @@
 // To parse this JSON data, do
 //
-//     final adminLogoutModel = adminLogoutModelFromJson(jsonString);
+//     final logoutModal = logoutModalFromJson(jsonString);
 
-
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-AdminLogoutModel adminLogoutModelFromJson(String str) => AdminLogoutModel.fromJson(json.decode(str));
+LogoutModal logoutModalFromJson(String str) => LogoutModal.fromJson(json.decode(str));
 
-String adminLogoutModelToJson(AdminLogoutModel data) => json.encode(data.toJson());
+String logoutModalToJson(LogoutModal data) => json.encode(data.toJson());
 
-class AdminLogoutModel {
-    AdminLogoutModel({
-        required this.login,
+class LogoutModal {
+    LogoutModal({
+        required this.admin,
     });
 
-    bool login;
+    bool admin;
 
-    factory AdminLogoutModel.fromJson(Map<String, dynamic> json) => AdminLogoutModel(
-        login: json["login"],
+    factory LogoutModal.fromJson(Map<String, dynamic> json) => LogoutModal(
+        admin: json["admin"],
     );
 
     Map<String, dynamic> toJson() => {
-        "login": login,
+        "admin": admin,
     };
 }

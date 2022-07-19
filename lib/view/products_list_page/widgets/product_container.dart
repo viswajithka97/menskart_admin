@@ -28,7 +28,6 @@ class ProductContainer extends StatelessWidget {
                 itemCount: controller.products.length,
                 separatorBuilder: (context, index) => kHeight10,
                 itemBuilder: (context, index) {
-                  print(controller.statusCode);
                   return Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -133,11 +132,21 @@ class ProductContainer extends StatelessWidget {
                                             containerIcon: Icons.edit,
                                             radius: kBRadius30,
                                             buttonText: 'Edit',
-                                            onpressed: () {},
+                                            onpressed: () {
+                                              Get.to(EditProductPage(
+                                                  index: index));
+                                            },
                                           ),
                                           const Spacer(),
                                           IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                controller.deleteProduct(
+                                                    controller
+                                                        .products[index].id);
+                                                controller.update();
+
+                                                // controller.getProducts();
+                                              },
                                               icon: const Icon(
                                                 Icons.delete,
                                                 color: Color.fromARGB(
