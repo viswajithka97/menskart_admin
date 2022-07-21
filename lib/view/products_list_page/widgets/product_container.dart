@@ -48,16 +48,20 @@ class ProductContainer extends StatelessWidget {
                                     imageUrl:
                                         '$baseImageUrl/${controller.products[index].id}.jpg',
                                     placeholder: (context, url) =>
-                                        CircularProgressIndicator(),
+                                        const SizedBox(
+                                            height: 50,
+                                            child: CircularProgressIndicator()),
                                     errorWidget: (context, url, error) {
-                                      // baseImageUrl = kProductAddedUrl;
                                       return CachedNetworkImage(
                                         height: 140,
                                         width: 140,
                                         imageUrl:
                                             '$kProductAddedUrl/${controller.products[index].id}.jpg',
                                         placeholder: (context, url) =>
-                                            CircularProgressIndicator(),
+                                            const SizedBox(
+                                                height: 70,
+                                                child:
+                                                    CircularProgressIndicator()),
                                       );
                                     },
                                   )
