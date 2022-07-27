@@ -15,7 +15,7 @@ class CategoriesListPage extends StatelessWidget {
       appBar: AppBar(),
       body: SafeArea(
           child: ListView(
-        children: [
+        children: const [
           kHeight10,
           CategoriesListtileWidget(),
         ],

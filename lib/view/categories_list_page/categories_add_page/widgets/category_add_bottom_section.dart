@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:menskart_admin/controller/category_controller/category_controller.dart';
 import 'package:menskart_admin/view/categories_list_page/categories_list_page.dart';
 import 'package:menskart_admin/view/core/border_radius.dart';
 import 'package:menskart_admin/view/core/color_constants.dart';
@@ -20,13 +22,21 @@ class CategoryAddBottomSection extends StatelessWidget {
           controller: categoryNameController,
         ),
         kHeight20,
-        ContainerConfirmButton(
-          height: 50,
-          width: double.infinity,
-          radius: kBRadius0,
-          buttonText: 'Add Category',
-          buttonColor: kYellow,
-          onpressed: () {},
+        GetBuilder<CategoryController>(
+          init: CategoryController(),
+          builder: (controller) {
+            return ContainerConfirmButton(
+              height: 50,
+              width: double.infinity,
+              radius: kBRadius0,
+              buttonText: 'Add Category',
+              buttonColor: kYellow,
+              onpressed: () {
+                controller.addCategory(categoryNameController.text);
+                Get.back();
+              },
+            );
+          },
         )
       ],
     );

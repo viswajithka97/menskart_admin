@@ -2,7 +2,6 @@
 //
 //     final categoryListModel = categoryListModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 CategoryListModel categoryListModelFromJson(String str) => CategoryListModel.fromJson(json.decode(str));

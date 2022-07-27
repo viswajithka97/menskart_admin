@@ -14,9 +14,6 @@ import 'package:menskart_admin/view/products_list_page/edit_products_page/widget
 class ProductController extends GetxController {
   List<Product> products = [];
   final ImagePicker picker = ImagePicker();
-  // late Response<dynamic> response;
-  // int? statusCode;
-
   File? imagefile1;
   File? imagefile2;
   File? imagefile3;
