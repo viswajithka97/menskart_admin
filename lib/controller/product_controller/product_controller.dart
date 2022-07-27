@@ -59,7 +59,8 @@ class ProductController extends GetxController {
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
           );
-
+          imagefile1 = null;
+          imageCache.clear();
           getProducts();
         } else {
           Get.snackbar(
