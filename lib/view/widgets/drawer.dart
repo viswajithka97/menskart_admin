@@ -64,13 +64,13 @@ class DrawerWidget extends StatelessWidget {
               Get.offAll(const OrdersListPage());
             },
           ),
-          ListTile(
-            title: const Text('View Coupon',
-                style: TextStyle(color: kWhite, fontSize: 20)),
-            onTap: () {
-              Get.offAll(const CouponPage());
-            },
-          ),
+          // ListTile(
+          //   title: const Text('View Coupon',
+          //       style: TextStyle(color: kWhite, fontSize: 20)),
+          //   onTap: () {
+          //     Get.offAll(const CouponPage());
+          //   },
+          // ),
           const Spacer(),
           GetBuilder<AuthenticationController>(
             init: AuthenticationController(),
@@ -79,7 +79,7 @@ class DrawerWidget extends StatelessWidget {
                 title: const Text('Logout',
                     style: TextStyle(color: kWhite, fontSize: 20)),
                 onTap: () {
-                 controller.logout();
+                  controller.logout();
                 },
               );
             },

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:menskart_admin/controller/order_controller/order_controller.dart';
 import 'package:menskart_admin/view/core/border_radius.dart';
 import 'package:menskart_admin/view/core/color_constants.dart';
 import 'package:menskart_admin/view/core/space_constants.dart';
@@ -14,45 +16,60 @@ class OrderPageContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.separated(
-          separatorBuilder: (context, index) {
-            return kHeight10;
-          },
-          itemCount: 20,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: (){
-                Get.to(()=>const OrderDetailPage());
-              },
-              child: Container(
-                height: 60,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: kBackgroundGrey, borderRadius: kBRadius10),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Viswajith K A',
-                        style:
-                            TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      ContainerConfirmButton(
-                        height: 25,
-                        width: 65,
-                        radius: kBRadius5,
-                        buttonText: 'Delivered',
-                        buttonColor: kLightGreen,
-                      ),
-                    ],
+        child: GetBuilder<OrderController>(
+      init: OrderController(),
+      builder: (controller) {
+        if (controller.orders == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return ListView.separated(
+            separatorBuilder: (context, index) {
+              return kHeight10;
+            },
+            itemCount: controller.orders!.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final orders = controller.orders![index];
+              return GestureDetector(
+                onTap: () {
+                  Get.to(() => OrderDetailPage(orders: orders));
+                },
+                child: Container(
+                  height: 60,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: kBackgroundGrey, borderRadius: kBRadius10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        orders.user == null
+                            ? const Text(
+                                "User Name",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )
+                            : Text(
+                                orders.user.toString(),
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                        ContainerConfirmButton(
+                          height: 25,
+                          width: 65,
+                          radius: kBRadius5,
+                          buttonText: orders.status,
+                          buttonColor: controller
+                              .deliveryStatusCheck(orders.status.toString()),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          }),
-    );
+              );
+            });
+      },
+    ));
   }
 }

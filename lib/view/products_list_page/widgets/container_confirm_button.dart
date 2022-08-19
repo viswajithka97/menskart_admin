@@ -10,35 +10,39 @@ class ContainerConfirmButton extends StatelessWidget {
   final IconData? containerIcon;
   final String buttonText;
   final Color buttonColor;
-   final BorderRadius radius ;
-   final VoidCallback? onpressed;
+  final BorderRadius radius;
+  final VoidCallback? onpressed;
   const ContainerConfirmButton({
     Key? key,
     required this.height,
     required this.width,
-     this.containerIcon,
-     this.buttonColor=kConButonColor,
+    this.containerIcon,
+    this.buttonColor = kConButonColor,
     required this.radius,
-    required this.buttonText, this.onpressed,
+    required this.buttonText,
+    this.onpressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       onTap: onpressed,
       child: Container(
         height: height,
         width: width,
-        decoration:
-            BoxDecoration(color: buttonColor, borderRadius: radius),
-        child:  Center(
-          child: Text(
-              buttonText,
-              style: const TextStyle(color: kBlack, fontSize: 15),
-            ),
+        decoration: BoxDecoration(color: buttonColor, borderRadius: radius),
+        child: Center(
+          child: buttonText == "Delived"
+              ? const Text(
+                  "Delivered",
+                  style: TextStyle(color: kBlack, fontSize: 15),
+                )
+              : Text(
+                  buttonText,
+                  style: const TextStyle(color: kBlack, fontSize: 15),
+                ),
         ),
-        ),
+      ),
     );
   }
 }

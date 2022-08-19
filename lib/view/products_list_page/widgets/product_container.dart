@@ -45,45 +45,36 @@ class ProductContainer extends StatelessWidget {
                                   child: CachedNetworkImage(
                                     height: 140,
                                     width: 140,
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      width: 140,
+                                      height: 140,
+                                      decoration: BoxDecoration(
+                                        borderRadius: kBRadius10,
+                                        image: DecorationImage(
+                                            image: imageProvider,
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
                                     imageUrl:
                                         '$baseImageUrl/${controller.products[index].id}.jpg',
-                                    placeholder: (context, url) =>
-                                        const SizedBox(
-                                            height: 50,
-                                            child: CircularProgressIndicator()),
+                                    placeholder: (context, url) => SizedBox(
+                                        height: 20,
+                                        child: Image.asset(
+                                            'assets/images/loading.png')),
                                     errorWidget: (context, url, error) {
                                       return CachedNetworkImage(
                                         height: 140,
                                         width: 140,
                                         imageUrl:
                                             '$kProductAddedUrl/${controller.products[index].id}.jpg',
-                                        placeholder: (context, url) =>
-                                            const SizedBox(
-                                                height: 70,
-                                                child:
-                                                    CircularProgressIndicator()),
+                                        placeholder: (context, url) => SizedBox(
+                                            height: 20,
+                                            child: Image.asset(
+                                                'assets/images/loading.png')),
                                       );
                                     },
-                                  )
-                                  //  Container(
-                                  //   height: 140,
-                                  //   width: 140,
-                                  //   decoration: BoxDecoration(
-                                  //       borderRadius: kBRadius10,
-                                  //       image: DecorationImage(
-                                  //           image: NetworkImage(
-                                  //               '$baseImageUrl/${controller.products[index].id}.jpg'),
-                                  //           onError: (
-                                  //             context,
-                                  //             error,
-                                  //           ) {
-                                  //             print('eerrprrr');
-
-                                  //             controller.update();
-                                  //           },
-                                  //           fit: BoxFit.cover)),
-                                  // ),
-                                  ),
+                                  )),
                               Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
                                 child: SizedBox(

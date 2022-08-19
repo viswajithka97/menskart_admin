@@ -19,7 +19,7 @@ class UserManagementPage extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: const [
-              UserManagementSearchWidget(),
+              // UserManagementSearchWidget(),
               kHeight20,
               UsersWidget()
             ],

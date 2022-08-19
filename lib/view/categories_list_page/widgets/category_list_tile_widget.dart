@@ -53,8 +53,9 @@ class CategoriesListtileWidget extends StatelessWidget {
                           radius: 25,
                           backgroundImage: imageProvider,
                         ),
-                        placeholder: (context, url) => const SizedBox(
-                            height: 30, child: CircularProgressIndicator()),
+                        placeholder: (context, url) => SizedBox(
+                            height: 30,
+                            child: Image.asset('assets/images/loading.png')),
                         errorWidget: (context, url, error) {
                           return CachedNetworkImage(
                             fit: BoxFit.cover,
@@ -65,8 +66,10 @@ class CategoriesListtileWidget extends StatelessWidget {
                               radius: 25,
                               backgroundImage: imageProvider,
                             ),
-                            placeholder: (context, url) => const SizedBox(
-                                height: 30, child: CircularProgressIndicator()),
+                            placeholder: (context, url) => SizedBox(
+                                height: 30,
+                                child:
+                                    Image.asset('assets/images/loading.png')),
                           );
                         },
                       ),

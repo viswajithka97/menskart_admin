@@ -39,7 +39,7 @@ class AddProductsDetailsSection extends StatelessWidget {
               hintText: 'Enter Product Brand',
               controller: brandController,
             ),
-             DropdowmenuHomepage(),
+            DropdowmenuHomepage(),
             TextandFormFieldWidget(
               headingText: 'Price',
               hintText: 'Product Price',
@@ -64,7 +64,6 @@ class AddProductsDetailsSection extends StatelessWidget {
                 final price = priceController.text;
 
                 final offerPercent = offerPercentController.text;
-                print(category);
 
                 controller.addProduct(
                     productName, brand, category, price, offerPercent);

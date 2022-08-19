@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:menskart_admin/model/dashboard_model/dashboard_model.dart';
 import 'package:menskart_admin/view/core/border_radius.dart';
 import 'package:menskart_admin/view/core/color_constants.dart';
 import 'package:menskart_admin/view/core/space_constants.dart';
 
 class DashboardTopContainer extends StatelessWidget {
+  final DashBoardModel? data;
   const DashboardTopContainer({
     Key? key,
+    required this.data,
   }) : super(key: key);
 
   @override
@@ -13,8 +16,8 @@ class DashboardTopContainer extends StatelessWidget {
     return Container(
       height: 100,
       width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: kBRadius10, color: kContainerGreen),
+      decoration:
+          BoxDecoration(borderRadius: kBRadius10, color: kContainerGreen),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -22,16 +25,14 @@ class DashboardTopContainer extends StatelessWidget {
           children: [
             const Text(
               'Total Profit',
-              style:
-                  TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  '₹ 37953',
-                  style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),
+                Text(
+                  '₹ ${data!.totalProfit.total}',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 Container(
                   height: 40,
@@ -48,7 +49,7 @@ class DashboardTopContainer extends StatelessWidget {
               ],
             ),
             Row(
-              children: const[
+              children: const [
                 CircleAvatar(
                   radius: 10,
                   child: Icon(
